@@ -17,6 +17,8 @@ from recon.domains import resolve_dns, get_subdomains
 from recon.ips import get_ip_geo, get_ip_threat
 from recon.emails import verify_email
 from recon.vehicles import lookup_vehicle
+from recon.phone import lookup_phone
+from recon.github import lookup_github
 
 # Load environment
 load_dotenv()
@@ -50,6 +52,8 @@ HELP_TEXT = """
 • `/ip <ip_address>` : Check Geolocation and AlienVault threat pulse reputation.
 • `/email <email>` : Perform MX record audits and SMTP handshake tests.
 • `/vehicle <plate_number>` : Verify Indian RTO registration & vehicle specifications.
+• `/phone <phone_number>` : Gather ITU-T validation, carrier, & location info.
+• `/github <username>` : Analyze public GitHub repositories & profile metrics.
 
 *๏ ᴀʟʟ sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ ᴄʀᴇᴅɪᴛs ʙᴇʟᴏɴɢ ᴄᴏᴍᴘʟᴇᴛᴇʟʏ ᴛᴏ ᴛʜᴇ ᴏᴡɴᴇʀ ᴀɴᴅ ᴅᴇᴠᴇʟᴏᴘᴇʀ:* [@VarshuAi](https://t.me/VarshuAi)
 ──────────────────
@@ -319,6 +323,66 @@ def handle_vehicle(message):
         result_text += "\n⚠️ _Note: Displaying simulated lookup matching target configuration (privacy masking applied)._"
 
     bot.edit_message_text(result_text, chat_id=message.chat.id, message_id=status_msg.message_id)
+
+@bot.message_handler(commands=["phone"])
+def handle_phone(message):
+    args = message.text.split()
+    if len(args) < 2:
+        bot.reply_to(message, "⚠️ *sʏɴᴛᴀx:* `/phone <phone_number>`\n_(e.g., /phone +919876543210)_")
+        return
+        
+    phone_number = "".join(args[1:])
+    status_msg = bot.reply_to(message, "🌀 *ᴀɴᴀʟʏᴢɪɴɢ ᴘʜᴏɴᴇ ɴᴜᴍʙᴇʀ...*")
+    
+    info = lookup_phone(phone_number)
+    
+    if info.get("status") == "error":
+        bot.edit_message_text(f"❌ {info['message']}", chat_id=message.chat.id, message_id=status_msg.message_id)
+        return
+        
+    result_text = f"📞 *ᴘʜᴏɴᴇ ɴᴜᴍʙᴇʀ ɪɴᴛᴇʟ*\n\n"
+    result_text += f"➻ *ᴛᴀʀɢᴇᴛ:* `{info.get('number')}`\n"
+    result_text += f"➻ *ᴄᴏᴜɴᴛʀʏ:* `{info.get('region', 'Unknown')}`\n"
+    result_text += "──────────────────\n"
+    result_text += f"• *ᴠᴀʟɪᴅɪᴛʏ:* `Valid Number (ITU-T)`\n"
+    result_text += f"• *ᴄᴀʀʀɪᴇʀ:* `{info.get('carrier', 'Unknown')}`\n"
+    result_text += f"• *ɢᴇᴏ-ʟᴏᴄᴀᴛɪᴏɴ:* `{info.get('location', 'Unknown')}`\n"
+    result_text += f"• *ᴛɪᴍᴇᴢᴏɴᴇs:* `{info.get('timezones', 'Unknown')}`\n"
+    result_text += f"• *ɪɴᴛᴇʀɴᴀᴛɪᴏɴᴀʟ:* `{info.get('intl_format', 'Unknown')}`\n"
+    
+    bot.edit_message_text(result_text, chat_id=message.chat.id, message_id=status_msg.message_id)
+
+@bot.message_handler(commands=["github"])
+def handle_github(message):
+    args = message.text.split()
+    if len(args) < 2:
+        bot.reply_to(message, "⚠️ *sʏɴᴛᴀx:* `/github <username>`")
+        return
+        
+    username = args[1]
+    status_msg = bot.reply_to(message, "🌀 *ᴀɴᴀʟʏᴢɪɴɢ ɢɪᴛʜᴜʙ ᴀᴄᴄᴏᴜɴᴛ...*")
+    
+    info = lookup_github(username)
+    
+    if info.get("status") == "error":
+        bot.edit_message_text(f"❌ {info['message']}", chat_id=message.chat.id, message_id=status_msg.message_id)
+        return
+        
+    result_text = f"🖥️ *ɢɪᴛʜᴜʙ ᴘʀᴏꜰɪʟᴇ ɪɴᴛᴇʟ*\n\n"
+    result_text += f"➻ *ᴛᴀʀɢᴇᴛ:* `{info.get('username')}`\n"
+    result_text += f"➻ *ɴᴀᴍᴇ:* `{info.get('name')}`\n"
+    result_text += "──────────────────\n"
+    result_text += f"• *ʙɪᴏ:* `{info.get('bio')}`\n"
+    result_text += f"• *ᴘᴜʙʟɪᴄ ʀᴇᴘᴏs:* `{info.get('public_repos')}`\n"
+    result_text += f"• *ɢɪsᴛs:* `{info.get('gists')}`\n"
+    result_text += f"• *ꜰᴏʟʟᴏᴡᴇʀs:* `{info.get('followers')}`\n"
+    result_text += f"• *ꜰᴏʟʟᴏᴡɪɴɢ:* `{info.get('following')}`\n"
+    result_text += f"• *ʟᴏᴄᴀᴛɪᴏɴ:* `{info.get('location')}`\n"
+    result_text += f"• *ᴄᴏᴍᴘᴀɴʏ:* `{info.get('company')}`\n"
+    result_text += f"• *ᴄʀᴇᴀᴛᴇᴅ ᴀᴛ:* `{info.get('created_at')}`\n"
+    result_text += f"• *ᴘʀᴏꜰɪʟᴇ:* [Link]({info.get('html_url')})\n"
+    
+    bot.edit_message_text(result_text, chat_id=message.chat.id, message_id=status_msg.message_id, disable_web_page_preview=True)
 
 if __name__ == "__main__":
     print("[IntelScope]: Starting bot polling...")
