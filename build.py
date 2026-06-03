@@ -42,14 +42,14 @@ def setup_and_build():
             
         print("\n[+] Obfuscating bot codebase recursively...")
         # Obfuscates bot.py and recursively processes submodules under recon/
-        success = run_command("pyarmor obfuscate --recursive bot.py")
+        success = run_command("pyarmor gen -O dist -r bot.py recon/")
         
         if success:
             print("\n" + "=" * 60)
-            print("🎉 Success! Obfuscation complete.")
-            print("📂 Output files are in: dist/")
-            print("💡 To run the obfuscated bot: python dist/bot.py")
-            print("⚠️  Note: Keep the 'dist/pyarmor_runtime_xxxxxx' folder with 'bot.py'")
+            print("Success! Obfuscation complete.")
+            print("Output files are in: dist/")
+            print("To run the obfuscated bot: python dist/bot.py")
+            print("Note: Keep the 'dist/pyarmor_runtime_xxxxxx' folder with 'bot.py'")
             print("=" * 60)
         else:
             print("\n[-] Obfuscation failed. Check PyArmor console logs above.")
@@ -66,9 +66,9 @@ def setup_and_build():
         
         if success:
             print("\n" + "=" * 60)
-            print("🎉 Success! Compilation complete.")
-            print("📂 Output binary is at: dist/bot.exe")
-            print("💡 Simply share 'dist/bot.exe' with users.")
+            print("Success! Compilation complete.")
+            print("Output binary is at: dist/bot.exe")
+            print("Simply share 'dist/bot.exe' with users.")
             print("=" * 60)
         else:
             print("\n[-] PyInstaller build failed. Check logs above.")
