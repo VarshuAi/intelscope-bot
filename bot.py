@@ -16,6 +16,7 @@ from recon.usernames import search_username
 from recon.domains import resolve_dns, get_subdomains
 from recon.ips import get_ip_geo, get_ip_threat
 from recon.emails import verify_email
+from recon.vehicles import lookup_vehicle
 
 # Load environment
 load_dotenv()
@@ -48,6 +49,7 @@ HELP_TEXT = """
 • `/domain <domain>` : Audit DNS records and check SSL/TLS subdomains.
 • `/ip <ip_address>` : Check Geolocation and AlienVault threat pulse reputation.
 • `/email <email>` : Perform MX record audits and SMTP handshake tests.
+• `/vehicle <plate_number>` : Verify Indian RTO registration & vehicle specifications.
 
 *๏ ᴀʟʟ sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ ᴄʀᴇᴅɪᴛs ʙᴇʟᴏɴɢ ᴄᴏᴍᴘʟᴇᴛᴇʟʏ ᴛᴏ ᴛʜᴇ ᴏᴡɴᴇʀ ᴀɴᴅ ᴅᴇᴠᴇʟᴏᴘᴇʀ:* [@VarshuAi](https://t.me/VarshuAi)
 ──────────────────
@@ -282,6 +284,40 @@ def handle_email(message):
         for mx in info['mx_records']:
             result_text += f"➻ `{mx}`\n"
             
+    bot.edit_message_text(result_text, chat_id=message.chat.id, message_id=status_msg.message_id)
+
+@bot.message_handler(commands=["vehicle"])
+def handle_vehicle(message):
+    args = message.text.split()
+    if len(args) < 2:
+        bot.reply_to(message, "⚠️ *sʏɴᴛᴀx:* `/vehicle <plate_number>`")
+        return
+        
+    plate_number = "".join(args[1:])
+    status_msg = bot.reply_to(message, "🌀 *ꜰᴇᴛᴄʜɪɴɢ ᴠᴇʜɪᴄʟᴇ ʀᴇɢɪsᴛʀᴀᴛɪᴏɴ ɪɴꜰᴏ...*")
+    
+    info = lookup_vehicle(plate_number)
+    
+    if info.get("status") == "error":
+        bot.edit_message_text(f"❌ {info['message']}", chat_id=message.chat.id, message_id=status_msg.message_id)
+        return
+        
+    result_text = f"🚘 *ᴠᴇʜɪᴄʟᴇ ʀᴇɢɪsᴛʀᴀᴛɪᴏɴ ɪɴᴛᴇʟ*\n\n"
+    result_text += f"➻ *ʀᴇɢɪsᴛʀᴀᴛɪᴏɴ:* `{info.get('registration_number', plate_number.upper())}`\n"
+    result_text += f"➻ *sᴛᴀᴛᴇ / ᴜᴛ:* `{info.get('state', 'Unknown')}`\n"
+    result_text += f"➻ *ʀᴛᴏ ᴏꜰꜰɪᴄᴇ:* `{info.get('rto_office', info.get('rto_code', 'Unknown'))}`\n"
+    result_text += "──────────────────\n"
+    result_text += f"• *ᴏᴡɴᴇʀ ɴᴀᴍᴇ:* `{info.get('owner_name', 'Masked / Protected')}`\n"
+    result_text += f"• *ᴍᴀᴋᴇ & ᴍᴏᴅᴇʟ:* `{info.get('make_model', 'Unknown')}`\n"
+    result_text += f"• *ꜰᴜᴇʟ ᴛʏᴘᴇ:* `{info.get('fuel_type', 'Unknown')}`\n"
+    result_text += f"• *ᴠᴇʜɪᴄʟᴇ ᴄʟᴀss:* `{info.get('vehicle_class', 'Unknown')}`\n"
+    result_text += f"• *ʀᴇɢɪsᴛʀᴀᴛɪᴏɴ ᴅᴀᴛᴇ:* `{info.get('registration_date', 'Unknown')}`\n"
+    result_text += f"• *ꜰɪᴛɴᴇss ᴜᴘᴛᴏ:* `{info.get('fitness_upto', 'Unknown')}`\n"
+    result_text += f"• *ɪɴsᴜʀᴀɴᴄᴇ ᴠᴀʟɪᴅɪᴛʏ:* `{info.get('insurance_validity', 'Unknown')}`\n"
+    
+    if info.get("simulated"):
+        result_text += "\n⚠️ _Note: Displaying simulated lookup matching target configuration (privacy masking applied)._"
+
     bot.edit_message_text(result_text, chat_id=message.chat.id, message_id=status_msg.message_id)
 
 if __name__ == "__main__":
