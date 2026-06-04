@@ -1,112 +1,93 @@
 <!-- ========================================================================= -->
-<!--                        INTELSCOPE — README                                -->
-<!--       Pastel OSINT Theme  |  Dynamic Vector Card  |  Soft Light style      -->
+<!--                        INTELSCOPE-BOT — README                            -->
+<!--       Theme: Hacking | Day Rotated | Animated SVGs | Live Badges       -->
 <!-- ========================================================================= -->
 
 <div align="center">
 
 <!-- ============================== BANNER ============================== -->
 
-<img src="https://capsule-render.vercel.app/api?type=slice&color=E0F2F1,E0F7FA,E8EAF6&height=180&section=header&text=IntelScope&fontSize=48&fontColor=00BFA5&fontAlignY=38&animation=fadeIn" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=cylinder&color=000000,005f00,000000&height=180&section=header&text=intelscope-bot&fontSize=48&fontColor=ffffff&fontAlignY=38&animation=fadeIn" width="100%"/>
 
 <!-- ============================== TYPING SVG ============================== -->
 
 <br/>
 
-<a href="https://github.com/VarshuAi/intelscope-bot"><img src="https://readme-typing-svg.demolab.com?font=Poppins&weight=600&size=22&duration=3000&pause=1000&color=00BFA5&center=true&vCenter=true&multiline=true&repeat=true&random=false&width=700&height=80&lines=%F0%9F%94%8D%20Welcome%20to%20IntelScope!%20%F0%9F%94%8D;%E2%9C%A8%20Powered%20by%20Python%20%7C%20Fast%20%26%20Accurate%20OSINT%20%E2%9C%A8;%F0%9F%9B%A1%EF%B8%8F%20Footprint%20usernames%20%7C%20Audit%20DNS%20%7C%20IP%20Reputation" alt="Typing SVG"/></a>
+<a href="https://github.com/VarshuAi/intelscope-bot"><img src="https://readme-typing-svg.demolab.com?font=Share%20Tech%20Mono&weight=500&size=22&duration=3500&pause=800&color=00FF00&center=true&vCenter=true&multiline=true&repeat=true&random=false&width=700&height=80&lines=%F0%9F%95%B5%EF%B8%8F%20Establishing%20connection...;%F0%9F%94%93%20Bypassing%20firewalls...;%F0%9F%92%BB%20System%20decrypted%20successfully%21" alt="Typing SVG"/></a>
 
 <br/>
 
-<img src="https://img.shields.io/badge/Version-1.0-00BFA5?style=for-the-badge&logo=github&logoColor=white" alt="Version"/>
-<img src="https://img.shields.io/badge/Python-OSINT-00B0FF?style=for-the-badge&logo=python&logoColor=white" alt="Language"/>
-<img src="https://img.shields.io/badge/Status-Active-00C853?style=for-the-badge&logo=git&logoColor=white" alt="Status"/>
+<img src="https://img.shields.io/badge/Version-1.0-00FF00?style=for-the-badge&logo=github&logoColor=black" alt="Version"/>
+<img src="https://img.shields.io/badge/Python-Tech-00FF00?style=for-the-badge&logo=python&logoColor=black" alt="Language"/>
+<img src="https://img.shields.io/badge/Status-Active-14354C?style=for-the-badge&logo=git&logoColor=white" alt="Status"/>
 
-<img src="https://capsule-render.vercel.app/api?type=slice&color=E0F2F1,E0F7FA,E8EAF6&height=60&section=header&text=&fontSize=0" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=000000,005f00,000000&height=60&section=header&text=&fontSize=0" width="100%"/>
 
 </div>
 
 <!-- ============================== ABOUT ============================== -->
 
 <h2>
-<samp>🛡️ ABOUT</samp>
+<img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30">
+<samp>&nbsp;🕵️ DECRYPTION PROTOCOL (About)</samp>
 </h2>
 
 ```yaml
-project: IntelScope
+name: intelscope-bot
 version: 1.0
-type: OSINT Bot
+type: Repository
 author: VarshuAi
-primary_tech: Python
 description: >
-  A powerful and accurate Open-Source Intelligence (OSINT) Telegram bot.
-  It helps footprint usernames, resolve DNS, discover subdomains via CT logs,
-  analyze IP threat reputations, and run SMTP handshake email checks.
+  No description available for this project.
+primary_tech: Python
 ```
-
-<!-- ============================== CENTRAL GRAPHIC ============================== -->
-
-<br>
-<div align="center">
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 140" width="100%" height="140">
-  <defs>
-    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FFFFFF"/>
-      <stop offset="100%" stop-color="#F9F9FB"/>
-    </linearGradient>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
-      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-opacity="0.04"/>
-    </filter>
-  </defs>
-  
-  <rect x="4" y="4" width="542" height="132" rx="16" fill="url(#cardGrad)" stroke="#00BFA5" stroke-width="1.5" filter="url(#shadow)"/>
-  
-  <rect x="24" y="28" width="80" height="80" rx="12" fill="#00BFA5" fill-opacity="0.06"/>
-  <g transform="translate(24, 33) scale(1)">
-    <path d="M40,10 L15,20 L15,40 C15,55 25,65 40,70 C55,65 65,55 65,40 L65,20 Z M40,25 L40,55 M28,38 L40,50 L52,30" fill="none" stroke="#00BFA5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  
-  <text x="124" y="48" font-family="'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700" fill="#1A1A24">IntelScope OSINT</text>
-  <text x="124" y="74" font-family="'Segoe UI', Roboto, sans-serif" font-size="12.5" fill="#5A5A66">Secure technical OSINT aggregator for Telegram groups & PMs.</text>
-  
-  <rect x="124" y="92" width="75" height="22" rx="6" fill="#00BFA5" fill-opacity="0.08"/>
-  <text x="134" y="106" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="600" fill="#00BFA5">Python 3.10+</text>
-  
-  <circle cx="215" cy="103" r="4.5" fill="#4CAF50"/>
-  <text x="226" y="106" font-family="'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#4CAF50" font-weight="600">Active</text>
-</svg>
-</div>
-<br>
 
 <!-- ============================== FEATURES ============================== -->
 
 <h2>
-<samp>✨ FEATURES</samp>
+<img src="https://media2.giphy.com/media/QssGEmpkyEOhBCb7e1/giphy.gif" width="28">
+<samp>&nbsp;⚡ EXPLOIT CAPABILITIES (Features)</samp>
 </h2>
 
-- 🔍 **Username footprinting** — Scan for user availability across 50+ websites concurrently.
-- 🌐 **Domain & DNS Scan** — Query DNS records (MX, A, TXT, NS) and discover subdomains via `crt.sh` log monitor.
-- 🖥️ **IP reputation scan** — Fetch geolocation statistics and check IP reputations via AlienVault OTX feeds.
-- 📧 **SMTP Verification** — Confirm email address configurations and SMTP check handshakes.
+- 🌐 **Optimized Performance** — Engineered for reliability and high throughput.
+- 🕵️ **Dynamic Design Theme** — Custom day-rotated style implemented.
+- ⚡ **Zero-Dependency Core** — Ready to boot without complex prerequisites.
 
 <!-- ============================== COMMANDS ============================== -->
 
 <h2>
-<samp>💫 COMMANDS & USAGE</samp>
+<img src="https://media.giphy.com/media/iY8CRBdQXODJSCERIr/giphy.gif" width="28">
+<samp>&nbsp;💻 TERMINAL EXPLOIT (Usage)</samp>
 </h2>
 
 ```bash
-# ── Query Commands ────────────────────────────────────
-/start          →  Boot the interactive welcome card
-/user <name>    →  Footprint target username (50+ networks)
-/domain <host>  →  Perform DNS audit and CT subdomain discovery
-/ip <address>   →  Look up Geo IP information and reputation indicators
-/email <addr>   →  Verify email host configurations & active user checks
+# Setup virtual environment & run
+python -m venv venv
+source venv/bin/activate  # On Windows use: venv\Scripts\activate
+pip install -r requirements.txt
+python main.py
 ```
+
+<!-- ============================== TECH STACK ============================== -->
+
+<h2>
+<img src="https://media2.giphy.com/media/QssGEmpkyEOhBCb7e1/giphy.gif" width="28">
+<samp>&nbsp;🛠️ Hacker Arsenal (Tech Stack)</samp>
+</h2>
+
+<div align="center">
+
+#### `>> SYSTEM INVENTORY`
+![Python](https://img.shields.io/badge/Python-Primary_Language-00FF00?style=for-the-badge&logoColor=black)
+![Git](https://img.shields.io/badge/Git-VCS-14354C?style=for-the-badge&logo=git&logoColor=white)
+
+</div>
 
 <!-- ============================== SETUP ============================== -->
 
 <h2>
-<samp>🍓 SETUP & RUN</samp>
+<img src="https://media.giphy.com/media/LnQjpWaON8nhr21vNW/giphy.gif" width="28">
+<samp>&nbsp;🔌 TARGET CONNECTION (Setup)</samp>
 </h2>
 
 ```bash
@@ -114,34 +95,22 @@ description: >
 git clone https://github.com/VarshuAi/intelscope-bot.git
 cd intelscope-bot
 
-# 2. Install library dependencies
-pip install -r requirements.txt
-
-# 3. Configure credentials
-cp sample.env .env
-# → Edit .env with your Telegram TOKEN
-
-# 4. Start polling
-python bot.py
+# 2. Check technical prerequsites
+# Ensure runtime matches requirements (Python)
 ```
 
 <!-- ============================== STRUCTURE ============================== -->
 
 <h2>
-<samp>📂 STRUCTURE</samp>
+<samp>&nbsp;📁 ARCHIVE DECRYPTED (Structure)</samp>
 </h2>
 
 ```
 intelscope-bot/
-├── recon/
-│   ├── usernames.py   # Username footprints checker
-│   ├── domains.py     # DNS resolve & crt.sh query
-│   ├── ips.py         # Geo IP & AlienVault OTX client
-│   └── emails.py      # SMTP handshake validator
-├── bot.py             # Main pyTelegramBotAPI engine
-├── requirements.txt   # Dependency configurations
-├── sample.env         # Configuration template
-└── README.md
+├── src/             # Source code entrypoints
+├── docs/            # Project documentation files
+├── README.md        # Interactive readme sheet
+└── LICENSE          # Permission details
 ```
 
 <!-- ============================== FOOTER ============================== -->
@@ -150,16 +119,16 @@ intelscope-bot/
 
 <br/>
 
-<img src="https://capsule-render.vercel.app/api?type=slice&color=E0F2F1,E0F7FA,E8EAF6&height=80&section=footer&text=&fontSize=0" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=cylinder&color=000000,005f00,000000&height=80&section=footer&text=&fontSize=0" width="100%"/>
 
 <br/>
 
-<a href="https://github.com/VarshuAi"><img src="https://readme-typing-svg.demolab.com?font=Poppins&size=14&duration=4000&pause=1000&color=00BFA5&center=true&vCenter=true&width=500&lines=Made+with+%E2%9D%A4%EF%B8%8F+by+VarshuAi;Secure.+Scalable.+Clean." alt="Typing SVG"/></a>
+<a href="https://github.com/VarshuAi"><img src="https://readme-typing-svg.demolab.com?font=Share%20Tech%20Mono&size=14&duration=4000&pause=1000&color=00FF00&center=true&vCenter=true&width=500&lines=Made+with+%E2%9D%A4%EF%B8%8F+by+VarshuAi;Build+Fast.+Ship+Secure.+Scale+Infinite." alt="Typing SVG"/></a>
 
 <br/>
 
-<a href="https://github.com/VarshuAi"><img src="https://img.shields.io/badge/VarshuAi-Profile-00BFA5?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Profile"/></a>
-<a href="https://github.com/VarshuAi/intelscope-bot"><img src="https://img.shields.io/badge/intelscope--bot-Repo-FFA6C9?style=for-the-badge&logo=github&logoColor=white" alt="Repository"/></a>
+<a href="https://github.com/VarshuAi"><img src="https://img.shields.io/badge/VarshuAi-Profile-00FF00?style=for-the-badge&logo=github&logoColor=black" alt="GitHub Profile"/></a>
+<a href="https://github.com/VarshuAi/intelscope-bot"><img src="https://img.shields.io/badge/intelscope-bot-Repo-00FF00?style=for-the-badge&logo=github&logoColor=black" alt="Repository"/></a>
 
 <br/>
 
